@@ -3,10 +3,7 @@ package com.iut;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import com.iut.account.model.Account;
 import com.iut.account.repo.AccountRepository;
@@ -15,6 +12,7 @@ import com.iut.user.model.User;
 import com.iut.user.repo.UserRepository;
 import com.iut.user.service.UserService;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class BankServiceTest {
 
     private static UserRepository userRepository;
@@ -24,7 +22,7 @@ public class BankServiceTest {
     private static BankService bankService;
 
     final String userId = "1234";
-    
+
     @BeforeAll
     static void generateDatabase() throws SQLException {
         userRepository = new UserRepository();

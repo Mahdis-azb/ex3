@@ -25,7 +25,7 @@ public class AccountServiceTest {
     void createAccountTest() {
         boolean created = accountService.createAccount("1234", 100, "1");
         Assertions.assertTrue(created);
-        Assertions.assertTrue(repository.existsById("1"));
+        Assertions.assertTrue(repository.existsById("1234"));
     }
 
     @Test
@@ -43,7 +43,7 @@ public class AccountServiceTest {
         Assertions.assertTrue(result);
         Assertions.assertEquals(30, accountService.getBalance("1234"));
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> accountService.withdraw("1234", -30));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> accountService.withdraw("1234", 120));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class AccountServiceTest {
         Assertions.assertEquals(60, accountService.getBalance("1234"));
         Assertions.assertEquals(90, accountService.getBalance("5678"));
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> accountService.transfer("1234", "5678", -50));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> accountService.transfer("1234", "5678", 120));
     }
 
     @Test
